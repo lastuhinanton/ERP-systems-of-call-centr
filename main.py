@@ -607,6 +607,7 @@ def main_actions(number):
     def req_add_inf_ab_per():
 
         def add_inf_ab():
+
             name = input('Enter name...\t')
             if name in [x.name for x in all_people]:
                 for person in all_people:
@@ -615,9 +616,10 @@ def main_actions(number):
                         number = input('Enter number...')
                         interest = input('Enter interest...')
                         person.add_inf(email, number, interest)
-                    else:
-                        print(f'{name} is not working. Try again...')
-                        add_inf_ab()
+            else:
+                print(f'{name} is not working. Try again...')
+                add_inf_ab()
+
             again = input('Do you wanna add information about employee again?')
             if again in ('Yes', 'yes', 'YES', 'YEs', 'YeS', 'yeS'):
                 add_inf_ab()
@@ -628,9 +630,11 @@ def main_actions(number):
         print('All operators:')
         for i, operator in enumerate(operators, start=1):
             print(f'{i}. {operator}')
+
         print('All interviewers:')
         for i, interviewer in enumerate(interviewers, start=1):
             print(f'{i}. {interviewer}')
+            
         print('All employees:')
         for i, person in enumerate(employee, start=1):
             print(f'{i}. {person}')
