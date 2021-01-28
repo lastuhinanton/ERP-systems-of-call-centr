@@ -29,7 +29,7 @@ projects_of_operators = {}
 projects_of_interviewers = {}
 operators = {}
 interviewers = {}
-employee = {}
+employees = {}
 employee_of_field = {}
 employee_of_callcentr = {}
 all_year_salary = {'January': {}, 'February':{}, 'March':{}, 'April':{},
@@ -155,7 +155,7 @@ class Person:
                 for project in projects_of_operators:
                     profiles[project] = 0
         else:
-            employee[name] = job
+            employees[name] = job
             all_people.append(self)
 
     def add_inf(self, email, number, interest):
@@ -222,7 +222,7 @@ class Person:
                     salary += projects_of_inter_money[project] * profiles[project]
                     profiles[project] = 0
                 all_year_salary[month_now][self.name] = salary + self.bonus
-            elif self.name in employee:
+            elif self.name in employees:
                 all_year_salary[month_now][self.name] = (self.hours * self.pay) + self.bonus
         else:
             print('You try count salary to employee again...')
@@ -626,20 +626,27 @@ def main_actions(number):
             elif again in ('No', 'no', 'NO', 'nO'):
                 print('Good job, Creater!')
 
+        if operators:
+            print('All operators:')
+            for i, operator in enumerate(operators, start=1):
+                print(f'{i}. {operator}')
 
-        print('All operators:')
-        for i, operator in enumerate(operators, start=1):
-            print(f'{i}. {operator}')
+        if interviewers:
+            print('All interviewers:')
+            for i, interviewer in enumerate(interviewers, start=1):
+                print(f'{i}. {interviewer}')
 
-        print('All interviewers:')
-        for i, interviewer in enumerate(interviewers, start=1):
-            print(f'{i}. {interviewer}')
-            
-        print('All employees:')
-        for i, person in enumerate(employee, start=1):
-            print(f'{i}. {person}')
+        if employees:
+            print('All employees:')
+            for i, person in enumerate(employee, start=1):
+                print(f'{i}. {person}')
 
-        add_inf_ab()
+        if not operators and not interviewers and not employees:
+            print('Thate')
+        else:
+            add_inf_ab()
+
+        
 
 
     def req_add_pay_to_emp():
