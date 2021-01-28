@@ -582,16 +582,19 @@ def main_actions(number):
         enter_employee()
 
     def req_watch_inf_ab_emp():
+
         def watch_inf():
             print([x.name for x in all_people])
             request_name = input('Enter name...\t')
+
             if request_name in [x.name for x in all_people]:
                 for person in all_people:
-                    if request_name == person.name:
+                    if person.name == request_name:
                         person.all_info()
-                    else:
-                        print(f'{request_name} is not working. Try again...')
-                        watch_inf()
+            else:
+                print(f'{request_name} is not working. Try again...')
+                watch_inf()
+
             again = input('\nDo you wanna watch information about person again?\t')
             if again in ('Yes', 'yes', 'YES', 'YEs', 'YeS', 'yeS'):
                 watch_inf()
@@ -600,7 +603,9 @@ def main_actions(number):
 
         watch_inf()
 
+
     def req_add_inf_ab_per():
+
         def add_inf_ab():
             name = input('Enter name...\t')
             if name in [x.name for x in all_people]:
