@@ -488,24 +488,60 @@ number_of_function = {'1':'" Add employee "', '2':'" Watch information about emp
 def number_of_action():
     first_request = input(f'\nMr. {name_start}, do you wanna watch what can that program do?\t')
     print()
+
+    def third_request():
+            print('\n1.\tAdd employee\n'
+                  '2.\tWatch information about employee\n'
+                  '3.\tAdd information about person (email, number, interest)\n'
+                  '4.\tAdd pay to employee\n'
+                  '5.\tAdd bonus to employee\n'
+                  '6.\tUp raise\n'
+                  '7.\tEnter time when employee go in to job\n'
+                  '8.\tEnter time when employee go out from job\n'
+                  '9.\tEnter success profiles of day for employee\n'
+                  '10.\tCount salary of all employees\n')
+            number_tmp =  input('What do you wanna do? Enter number of your request...\t')
+            if number_tmp in ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10'):
+                return number_tmp
+            else:
+                print(f'\nYou entered wrong request, {name_start}\n'
+                    'Please, repeat your request again, only choose "Yes" or "No"\n')
+                return third_request()
+
     if first_request in ('Yes', 'yes', 'YES', 'YEs', 'YeS', 'yeS'):
-        print('1.\tAdd employee\n'
-              '2.\tWatch information about employee\n'
-              '3.\tAdd information about person (email, number, interest)\n'
-              '4.\tAdd pay to employee\n'
-              '5.\tAdd bonus to employee\n'
-              '6.\tUp raise\n'
-              '7.\tEnter time when employee go in to job\n'
-              '8.\tEnter time when employee go out from job\n'
-              '9.\tEnter success profiles of day for employee\n'
-              '10.\tCount salary of all employees\n')
-        return input('What do you wanna do? Enter number of your request...\t')
+        return third_request()
+                
+
     elif first_request in ('No', 'no', 'NO', 'nO'):
-        question = input('Do you know numbers funсtions of that program?')
-        if question in ('Yes', 'yes', 'YES', 'YEs', 'YeS', 'yeS'):
-            return input('What do you wanna do? Enter number of your request...')
-        elif question in ('No', 'no', 'NO', 'nO'):
-             return number_of_action()
+        def second_request():
+            question = input('Do you know numbers funсtions of that program?\t')
+
+            if question in ('Yes', 'yes', 'YES', 'YEs', 'YeS', 'yeS'):
+                return input('What do you wanna do? Enter number of your request...\t')
+            elif question in ('No', 'no', 'NO', 'nO'):
+                 return question
+            else:
+                print(f'\nYou entered wrong request, {name_start}\n'
+                    'Please, repeat your request again, only choose "Yes" or "No"\n')
+                return second_request()
+                
+
+        tmp = second_request()
+        if tmp in ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10'):
+            return tmp
+        elif tmp in ('No', 'no', 'NO', 'nO'):
+            return number_of_action()
+        else:
+            print(f'\n{name_start}, you entered wrong number\n'
+                    'Please, repeat your number from 1 to 10\n')
+            return third_request()
+
+
+
+    else:
+        print(f'\n{name_start}, you entered wrong request\n'
+            'Please, repeat your request again, only choose "Yes" or "No"\n')
+        return number_of_action()
 
 
 def main_actions(number):
