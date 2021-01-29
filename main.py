@@ -419,7 +419,11 @@ class Accountant(Other_F):
         Field_surveys.__init__(self, name, surname, birthday, passport, address, family, 'Accountant')
 
 
-
+#========================================================
+"""
+THAT PLACE FOR TEST 
+"""
+#========================================================
 
 # kristina = Usually_operators('Kristina Sosnova', 'Sergeevna', '31.07.01', '13081038', 'Lenina 42', '--')
 # anton = Interviewers('Anton Lastuhin', 'Sergeevich', '31.07.01', '13081038', 'Lenina 42', '--')
@@ -437,6 +441,8 @@ class Accountant(Other_F):
 vsiom = Customer('Vsiom')
 vsiom.add_project('KRATOS', 1000, '27.01.2021', '1000$', 97, 'callcenter')
 vsiom.add_project('NPS_January', 1000, '27.01.2021', '1000$', 75, 'Field')
+
+#========================================================
 
 
 
@@ -486,10 +492,16 @@ number_of_function = {'1':'" Add employee "', '2':'" Watch information about emp
                   '10':'" Count salary of all employees "'}
 
 def number_of_action():
+    """
+    That function return number. Next function defines number that know what it will do 
+    """
     first_request = input(f'\nMr. {name_start}, do you wanna watch what can that program do?\t')
     print()
 
     def third_request():
+        """
+        That function return number
+        """
             print('\n1.\tAdd employee\n'
                   '2.\tWatch information about employee\n'
                   '3.\tAdd information about person (email, number, interest)\n'
@@ -500,12 +512,13 @@ def number_of_action():
                   '8.\tEnter time when employee go out from job\n'
                   '9.\tEnter success profiles of day for employee\n'
                   '10.\tCount salary of all employees\n')
-            number_tmp =  input('What do you wanna do? Enter number of your request...\t')
-            if number_tmp in ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10'):
-                return number_tmp
+
+            number_tmp =  input('What do you wanna do? Enter number of your request...\t')           
+            if number_tmp in ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10'):                       
+                return number_tmp                                                                      #If user entered right number function returns number
             else:
-                print(f'\nYou entered wrong request, {name_start}\n'
-                    'Please, repeat your request again, only choose "Yes" or "No"\n')
+                print(f'\nYou entered wrong request, {name_start}\n'                                    # and if not than function do request on the enter repeatly  
+                    'Please, repeat your request again, only choose "Yes" or "No"\n')                   # to the " third_request() " function
                 return third_request()
 
     if first_request in ('Yes', 'yes', 'YES', 'YEs', 'YeS', 'yeS'):
@@ -517,9 +530,9 @@ def number_of_action():
             question = input('Do you know numbers funсtions of that program?\t')
 
             if question in ('Yes', 'yes', 'YES', 'YEs', 'YeS', 'yeS'):
-                return input('What do you wanna do? Enter number of your request...\t')
-            elif question in ('No', 'no', 'NO', 'nO'):
-                 return question
+                return input('What do you wanna do? Enter number of your request...\t')                # returns number from 1 to 10, but if number isn't 
+            elif question in ('No', 'no', 'NO', 'nO'):                                                 #    from 1 to 10 or it's not number than script sends  
+                 return question                                                                       #    on checking
             else:
                 print(f'\nYou entered wrong request, {name_start}\n'
                     'Please, repeat your request again, only choose "Yes" or "No"\n')
@@ -527,8 +540,8 @@ def number_of_action():
                 
 
         tmp = second_request()
-        if tmp in ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10'):
-            return tmp
+        if tmp in ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10'):                                 # here checking request user's number 
+            return tmp                                                                                 # if user gived answer no on question if know program's function
         elif tmp in ('No', 'no', 'NO', 'nO'):
             return number_of_action()
         else:
@@ -539,9 +552,9 @@ def number_of_action():
 
 
     else:
-        print(f'\n{name_start}, you entered wrong request\n'
-            'Please, repeat your request again, only choose "Yes" or "No"\n')
-        return number_of_action()
+        print(f'\n{name_start}, you entered wrong request\n'                                          # if user entered wrong request than he or she returns
+            'Please, repeat your request again, only choose "Yes" or "No"\n')                         # on " number_of_action " function
+        return number_of_action()           
 
 
 def main_actions(number):
