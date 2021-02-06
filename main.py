@@ -518,7 +518,7 @@ def number_of_action():
               '10.\tCount salary of all employees\n')
 
         number_tmp =  input('What do you wanna do? Enter number of your request...\t')                                          #If user entered right number function returns number
-        if all_people:    
+        if all_people or number_tmp == '1':    
             if number_tmp in ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10'):                                                   # and if not than function do request on the enter repeatly  
                 return number_tmp                                                                                                   # to the " third_request() " function
             elif number_tmp in ("I wanna go out", "i wanna go out", "go out", "out", "live", "live out", "i wanna out"):
@@ -618,7 +618,7 @@ def main_actions(number):
                 else:
                     print(f"{name_start}, please, repeat again number from 1 to 13\n")
                     tmp_req_add = True
-                    enter_employee(name_start)
+                    return enter_employee(name_start)
 
             elif not tmp_req_add:
                 answer = input(f'\n(1)Are you sure wanna enter {persons[request]}?\t')
@@ -691,12 +691,20 @@ def main_actions(number):
             enter_employee(name_start)
 
         if addit:
+            def repeat_add():
                 request = input('\nDo you wanna add employee again?\t')
                 if request in ('Yes', 'yes', 'YES', 'YEs', 'YeS', 'yeS'):
                     tmp_req_add = True
                     enter_employee(name_start)
                 elif request in ('No', 'no', 'NO', 'nO'):
                     print('Good work, Creater!')
+                else:
+                    print(f"\n{name_start}, i don't know that request\n"
+                    "Please, repeat again 'Yes' or 'No'\n")
+                    tmp_req_add = True
+                    return repeat_add()
+            repeat_add()
+
 
     def req_watch_inf_ab_emp():
 
@@ -714,13 +722,12 @@ def main_actions(number):
                 print(f'{request_name} is not working. Try again...\n')
                 watch_inf()
 
-            again = input('\nDo you wanna watch information about person again?\t')
-            if again in ('Yes', 'yes', 'YES', 'YEs', 'YeS', 'yeS'):
-                watch_inf()
-            elif again in ('No', 'no', 'NO', 'nO'):
-                print('Good job, Creater!')
-
         watch_inf()
+        again = input('\nDo you wanna watch information about person again?\t')
+        if again in ('Yes', 'yes', 'YES', 'YEs', 'YeS', 'yeS'):
+            watch_inf()
+        elif again in ('No', 'no', 'NO', 'nO'):
+            print('Good job, Creater!')
 
 
     def req_add_inf_ab_per():
@@ -924,7 +931,9 @@ def main_actions(number):
     def fourth_request(number, name_start):
         nonlocal tmp_fourth_req
         if tmp_fourth_req:
-            req = input(f'\nAre you sure you want to do that function {number_of_function[number]}?\t')
+            if number in ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10'):
+                req = input(f'\nAre you sure you want to do that function {number_of_function[number]}?\t')
+
         elif not tmp_fourth_req:
             req = input(f'\n{name_start}, your request >>>\t')
 
